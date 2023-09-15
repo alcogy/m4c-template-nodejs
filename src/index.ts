@@ -14,8 +14,8 @@ const port = "8080";
 const jwt_secret_key = 'as2d67bw3er';
 
 const connectionInfo = {
-  host: 'm3se-database',
-  database: 'm3se-db',
+  host: 'm4c-database',
+  database: 'm4c-db',
   user: 'user',
   password: 'pass',
   port: 5432,
@@ -60,7 +60,7 @@ app.post('/signin', async (req: Request, res: Response) => {
     const result = await bcrypt.compare(body.password, account.password);
     const token = sign({user: account}, jwt_secret_key, { expiresIn: '1w' });
     
-    res.cookie('m3s', { token: token });
+    res.cookie('m4c', { token: token });
     res.status(200).send({ result: result, token: token });
   } catch (error) {
     console.error(error);
